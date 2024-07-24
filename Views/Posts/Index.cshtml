@@ -1,3 +1,5 @@
+@model List<Post>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    Posts List
+    @foreach(var post in Model)
+    {
+        <p>@post.Title</p>
+    }
 </body>
 </html>
