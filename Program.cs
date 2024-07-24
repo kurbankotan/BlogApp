@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+//Controllers'ın Views ile ilişkilendirilmesi için
+builder.Services.AddControllersWithViews();
 
 //SQL BAĞLANTISI İÇİN ÖNCEDEN HABER EDELİM
 builder.Services.AddDbContext<BlogContext>(options=>{
@@ -23,6 +24,8 @@ var app = builder.Build();
 //
 SeedData.TestVerileriniDoldur(app);
 
-app.MapGet("/", () => "Hello World!");
+
+// Default Routing İçin
+app.MapDefaultControllerRoute();
 
 app.Run();

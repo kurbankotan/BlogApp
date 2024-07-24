@@ -122,3 +122,5 @@ C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\Blog
 C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\BlogApp.genruntimeconfig.cache
 C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\ref\BlogApp.dll
 C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\BlogApp.sourcelink.json
+C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\BlogApp.RazorAssemblyInfo.cache
+C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\BlogApp.RazorAssemblyInfo.cs
