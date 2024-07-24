@@ -64,6 +64,13 @@ komutu ile yeni migrations oluştururuz. InitialCreate ismi keyfi
 
 dotnet ef database update
 
+
+(Sayfada SeedData yani hazır veri eklendi. Onun için önce database'i drop edelim:
+dotnet ef database drop --force --context BlogContext
+daha sonra 
+dotnet watch 
+deyip çalıştırınca uygulama başlangıçta veri tabanını oluşturur ve içini doldurur.
+)
 -------------------------------------------------------------------------------------------------------
 
 Veritabanın güncelleme yapıldıktan sonra. Mesela bir tablo eklendiğinde:

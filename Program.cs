@@ -14,7 +14,14 @@ builder.Services.AddDbContext<BlogContext>(options=>{
 
 });
 
+
+
+// Build en sonda olmalı oyüzden diğer bildirilecek herşey bundan yukarıda olmalı
 var app = builder.Build();
+
+
+//
+SeedData.TestVerileriniDoldur(app);
 
 app.MapGet("/", () => "Hello World!");
 
