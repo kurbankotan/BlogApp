@@ -1,0 +1,82 @@
+Entity Framework'ü projeye eklemek için Program.cs olan klasöre terminali konumlandırıp aşağıdaki kodu çalıştır
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+
+
+Bu komutun çalışmasından sonra projeadi.csproj dosyasında sqlite'in projeye kurulumunu gösteren kodun eklenmiş olduğunu göreceğiz
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+Bundan sonra Connection Strings'i appsettings.Development.json dosyasına eklememiz lazım. (geliştirme bitmiş ürün olduysa appsettings.json'e ekleriz)
+
+
+  "ConnectionStrings": {
+                         "sql_connection": "Data Sourse=blogDB"
+                       }
+
+
+
+
+Daha sonra Program.cs dosyasına bunu eklememiz lazım
+
+
+using BlogApp.Data.Concrete.EfCore;   // BlogContext dosyasının ait olduğu klasör  BlogApp/Data/Concrete/EfCore/BlogContext.cs
+using Microsoft.EntityFrameworkCore;
+
+
+//SQL BAĞLANTISI İÇİN ÖNCEDEN HABER EDELİM
+builder.Services.AddDbContext<BlogContext>(options=>{
+
+    var config =builder.Configuration;
+    var connectionString = config.GetConnectionString("sql_connection");      //ConnectionStrings'de bağlantı adını sql_connection yazdığımız için bu başka bir isim de olur
+    options.UseSqlite(connectionString);
+
+});
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Daha sonra Migration yapmamız lazım eğer ef yüklü değilse global alana bu komut ile yükle (Global alan ise daha sonraki projelerde yüklemeye gerek kalmaz)
+
+dotnet tool list --global
+
+------------------------------------------------------------------------------------------------------------------------
+
+Daha sonra ef'yi kullanmak için Design paketini projeye yüklememiz lazım proje dizini içersine(Program.cs'nin olduğu klasör) bu komut ile :
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+Bu komutun çalışmasından sonra projeadi.csproj dosyasında Design paketinin projeye kurulumunu gösteren kodun eklenmiş olduğunu göreceğiz
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Bundan sonra migrations komutlarını kullanabiliriz. 
+
+dotnet build 
+
+komutu ile migrations yapmadan önce hata olup olmadığını görebiliriz
+-----------------------------------------------------------------------------------------------------
+dotnet ef migrations add InitialCreate
+
+komutu ile yeni migrations oluştururuz. InitialCreate ismi keyfi
+-----------------------------------------------------------------------------------------------------
+Şimdi veritabanına aktarma zamanı. Bu kod ile migrations ile veritabaına aktarılır:
+
+dotnet ef database update
+
+-------------------------------------------------------------------------------------------------------
+
+Veritabanın güncelleme yapıldıktan sonra. Mesela bir tablo eklendiğinde:
+
+dotnet ef migrations add AddTableBegeniler
+
+(Eğer bir nedenden dolayı migrations'ı silmek istersek veri tabanına aktarmadan önce:
+dotnet ef migrations remove
+komutunu çalıştırmamız lazım. Bu en son migrations'ı siler)
+
+komutu ile yaparız ama veritabanı tarafında hala bir değişiklik olmaz. Orada da güncelleme için bu komutu çalıştırırız:
+
+dotnet ef database update
+
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite 
