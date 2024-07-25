@@ -114,3 +114,19 @@ libman install bootstrap@5.3.3 -d wwwroot/lib/bootstrap
 
 
 
+Icon yüklemek için ise:
+
+libman install bootstrap-icons@1.11.3 -d  wwwroot/lib/bootstrap-icons
+
+
+
+libman ile yüklediğim klasörleri bir neden ile silmiş ise (taşırken büyük bir dosya olabilir ve silinmiştir taşıma için) libman.json dosyası var olduğundan
+ve içinde paketler için bilgi olduğundan komut satırına
+
+libman restore 
+
+yazılırsa tekrar klasörler indirilip projeye eklenir.
+
+
+
+
