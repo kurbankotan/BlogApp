@@ -124,3 +124,5 @@ C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\Blog
 C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\BlogApp.sourcelink.json
 C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\BlogApp.RazorAssemblyInfo.cache
 C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\obj\Debug\net8.0\BlogApp.RazorAssemblyInfo.cs
+C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\bin\Debug\net8.0\libman.json
+C:\Users\PC\OneDrive - duzce.edu.tr\Programlama Çalışmaları\Aspnet Core\BlogApp\bin\Debug\net8.0\BlogApp.staticwebassets.runtime.json

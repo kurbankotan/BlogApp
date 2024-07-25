@@ -87,3 +87,30 @@ dotnet ef database update
 
 
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite 
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+CSS, CDN ile değil de proje içine yükleyerek kullanalım. Bunun için önce libman'i kurmamız lazım yoksa.
+Önce global alanda libman var mı diye bakalım:
+
+dotnet tool list -g
+
+yoksa 
+
+dotnet tool install microsoft.web.librarymanager.cli -g
+
+komutu ile yüklenir. 
+
+Paketleri yönetecek olan libman.json dosyasını kuralım:
+
+libman init -p cdnjs
+
+Daha sonra  https://getbootstrap.com/'da olan son bootstrap'i projeye wwwroot/lib/bootstrap klasörü altında ekleyelim (Şuan için 5.3.3 var):
+
+libman install bootstrap@5.3.3 -d wwwroot/lib/bootstrap
+
+
+

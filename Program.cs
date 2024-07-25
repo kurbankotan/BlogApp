@@ -26,6 +26,9 @@ builder.Services.AddScoped<IPostRepository, EfPostRepository>();
 var app = builder.Build();
 
 
+//wwwroot klasörü altındaki statik dosyalar http taleplerini karşılamak için aşağıdaki kod yazılır
+app.UseStaticFiles();
+
 //
 SeedData.TestVerileriniDoldur(app);
 
