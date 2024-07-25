@@ -1,3 +1,5 @@
+using BlogApp.Data.Abstract;
+using BlogApp.Data.Concrete;
 using BlogApp.Data.Concrete.EfCore;   // BlogContext dosyasının ait olduğu klasör  BlogApp/Data/Concrete/EfCore/BlogContext.cs
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +16,9 @@ builder.Services.AddDbContext<BlogContext>(options=>{
     options.UseSqlite(connectionString);
 
 });
+
+//Her http request'inde bize aynı nesneyi göndertmek için
+builder.Services.AddScoped<IPostRepository, EfPostRepository>();
 
 
 
