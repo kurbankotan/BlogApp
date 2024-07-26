@@ -19,7 +19,7 @@ builder.Services.AddDbContext<BlogContext>(options=>{
 
 //Her http request'inde bize aynı nesneyi göndertmek için
 builder.Services.AddScoped<IPostRepository, EfPostRepository>();
-
+builder.Services.AddScoped<ITagRepository, EfTagRepository>();
 
 
 // Build en sonda olmalı oyüzden diğer bildirilecek herşey bundan yukarıda olmalı
