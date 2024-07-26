@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
       "Id": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\img\\1.png",
       "PackagePath": "staticwebassets\\img\\1.png"
     },

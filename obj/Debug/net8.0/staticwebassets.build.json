@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "D5aKZUoE4DjGhhTTa52Ytw2QvZv/gH4+iG945D4JEvM=",
+  "Hash": "d0ppx9ND3RDvakeTqx9FoEHzf9TmSOIt/cmJk310nRI=",
   "Source": "BlogApp",
   "BasePath": "_content/BlogApp",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\css\\style.css",
+      "SourceId": "BlogApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\",
+      "BasePath": "_content/BlogApp",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
     {
       "Identity": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\img\\1.png",
       "SourceId": "BlogApp",
