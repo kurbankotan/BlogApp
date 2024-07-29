@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\img\\6.png"
     },
     {
+      "Id": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\img\\p1.jpeg",
+      "PackagePath": "staticwebassets\\img\\p1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\img\\p2.jpeg",
+      "PackagePath": "staticwebassets\\img\\p2.jpeg"
+    },
+    {
       "Id": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\lib\\bootstrap-icons\\bootstrap-icons.svg",
       "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\bootstrap-icons.svg"
     },

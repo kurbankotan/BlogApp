@@ -21,6 +21,6 @@ public class Post
 
     public List<Tag> Tags  { get; set; } = new List<Tag>();
 
-    public List<Comment> Commets { get; set; } = new List<Comment>();
+    public List<Comment> Comments { get; set; } = new List<Comment>();
     
 }
