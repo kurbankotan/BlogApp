@@ -2,6 +2,7 @@ using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete;
 using BlogApp.Data.Concrete.EfCore;   // BlogContext dosyasının ait olduğu klasör  BlogApp/Data/Concrete/EfCore/BlogContext.cs
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,8 +33,20 @@ app.UseStaticFiles();
 //
 SeedData.TestVerileriniDoldur(app);
 
+// localhost://posts/react-dersleri
+// localhost://posts/php-dersleri
 
 // Default Routing İçin
-app.MapDefaultControllerRoute();
+app.MapControllerRoute(
+    name: "post_details",
+    pattern:"posts/{url}",
+    defaults: new {controller="Posts", action="Details"}
+);
+
+app.MapControllerRoute(
+    name: "default",
+    pattern:"{controller=Home}/{action=Index}/{id?}"
+
+);
 
 app.Run();
