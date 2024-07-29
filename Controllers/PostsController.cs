@@ -11,11 +11,12 @@ namespace BlogApp.Controllers
     {
 
         private IPostRepository _postRepository;
+        private ICommentRepository _commentRepository;
 
-
-        public PostsController(IPostRepository postRepository)
+        public PostsController(IPostRepository postRepository, ICommentRepository commentRepository)
         {
            _postRepository = postRepository;
+           _commentRepository = commentRepository;
         }
 
 
@@ -48,6 +49,26 @@ namespace BlogApp.Controllers
             .ThenInclude(x =>x.User)
             .FirstOrDefaultAsync(p=>p.Url == url));
         }
+
+
+        public IActionResult AddComment(int PostId, string UserName, string Text, string Url)
+        {
+            var entity = new Comment
+            {
+                Text =Text,
+                PublishedOn = DateTime.Now,
+                PostId = PostId,
+                User = new User {UserName = UserName, Image = "avatar.jpeg"}
+            };
+
+            _commentRepository.CreateComment(entity);
+
+          //  return Redirect("/posts/details/"+ Url);
+          // Veya şağıdaki  gibi de yazılabilir
+
+          return RedirectToRoute("post_details", new {url=Url});
+        }
+
 
 
     }

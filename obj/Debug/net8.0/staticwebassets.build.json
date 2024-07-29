@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h+rU6Ica0mus5fzXZGRVE1fpgx8CuuCNakBzt07orWg=",
+  "Hash": "W7qq4f3/U474AgLBNN+YBOrZLxbj5ILX/nY4hsUZals=",
   "Source": "BlogApp",
   "BasePath": "_content/BlogApp",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\6.png"
+    },
+    {
+      "Identity": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\img\\avatar.jpeg",
+      "SourceId": "BlogApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\",
+      "BasePath": "_content/BlogApp",
+      "RelativePath": "img/avatar.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\avatar.jpeg"
     },
     {
       "Identity": "C:\\Users\\PC\\OneDrive - duzce.edu.tr\\Programlama Çalışmaları\\Aspnet Core\\BlogApp\\wwwroot\\img\\p1.jpeg",
