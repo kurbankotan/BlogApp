@@ -22,6 +22,7 @@ namespace BlogApp.Controllers
 
         public async Task<IActionResult> Index(string tag)
         {
+            var claims = User.Claims;
             var posts = _postRepository.Posts;
             if(!string.IsNullOrEmpty(tag))
             {
@@ -50,6 +51,9 @@ namespace BlogApp.Controllers
             .FirstOrDefaultAsync(p=>p.Url == url));
         }
 
+
+
+
         [HttpPost]
         public JsonResult AddComment(int PostId, string UserName, string Text)
         {
@@ -76,6 +80,10 @@ namespace BlogApp.Controllers
 
                       );
         }
+
+
+
+        
 
 
 

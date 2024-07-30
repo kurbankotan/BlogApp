@@ -1,6 +1,7 @@
 using BlogApp.Data.Abstract;
 using BlogApp.Data.Concrete;
 using BlogApp.Data.Concrete.EfCore;   // BlogContext dosyasının ait olduğu klasör  BlogApp/Data/Concrete/EfCore/BlogContext.cs
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 
@@ -10,18 +11,26 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //SQL BAĞLANTISI İÇİN ÖNCEDEN HABER EDELİM
-builder.Services.AddDbContext<BlogContext>(options=>{
+// builder.Services.AddDbContext<BlogContext>(options=>{
 
-    var config =builder.Configuration;
-    var connectionString = config.GetConnectionString("sql_connection");      //ConnectionStrings'de bağlantı adını sql_connection yazdığımız için bu başka bir isim de olur
-    options.UseSqlite(connectionString);
+//     var config =builder.Configuration;
+//     var connectionString = config.GetConnectionString("sql_connection");      //ConnectionStrings'de bağlantı adını sql_connection yazdığımız için bu başka bir isim de olur
+//     options.UseSqlite(connectionString);
 
-});
+// });
+
+//Yukarıdaki kodu tek satırda da yazabiliriz aşağıdaki gibi
+
+builder.Services.AddDbContext<BlogContext>(options=>{ options.UseSqlite(builder.Configuration["ConnectionStrings:sql_connection"]);});
+
+//Authentication İçin
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 //Her http request'inde bize aynı nesneyi göndertmek için yazılır (Dependency injection)
 builder.Services.AddScoped<IPostRepository, EfPostRepository>();
 builder.Services.AddScoped<ITagRepository, EfTagRepository>();
 builder.Services.AddScoped<ICommentRepository, EfCommentRepository>();
+builder.Services.AddScoped<IUserRepository, EfUserRepository>();
 
 
 // Build en sonda olmalı oyüzden diğer bildirilecek herşey bundan yukarıda olmalı
@@ -30,6 +39,10 @@ var app = builder.Build();
 
 //wwwroot klasörü altındaki statik dosyalar http taleplerini karşılamak için aşağıdaki kod yazılır
 app.UseStaticFiles();
+
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
 //
 SeedData.TestVerileriniDoldur(app);
