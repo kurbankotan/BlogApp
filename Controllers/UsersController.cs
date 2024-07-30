@@ -21,6 +21,11 @@ namespace BlogApp.Controllers
 
         public IActionResult Login()
         {
+            //Eğer kullanıcı daha önce login yapmışsa login sayfası görünmesin posts'un sayfasına gitsin
+            if(User.Identity!.IsAuthenticated)
+            {
+                return RedirectToAction("Index","Posts");
+            }
             return View();
         }
 
@@ -69,7 +74,13 @@ namespace BlogApp.Controllers
 
         }
 
-        
+    
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
 
 
 
