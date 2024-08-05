@@ -145,15 +145,53 @@ namespace BlogApp.Controllers
 
 
 
+        [Authorize]
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            if(id==null)
+            {
+                return NotFound();
+            }
+
+            var post = _postRepository.Posts.FirstOrDefault(x=> x.PostId == id);
+            if(post == null)
+            {
+                return NotFound();
+            }
 
 
+            return View(new PostCreateViewModel {
+                PostId = post.PostId,
+                Title = post.Title,
+                Description = post.Description,
+                Content = post.Content,
+                Url = post.Url,
+                IsActive = post.IsActive
+            });
+        }
 
 
-
-
-
-
-
+        [Authorize]
+        [HttpPost]
+        public IActionResult Edit(PostCreateViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var entityToUpdate = new Post {
+                                                 PostId = model.PostId,
+                                                 Title = model.Title,
+                                                 Description = model.Description,
+                                                 Content = model.Content,
+                                                 Url = model.Url,
+                                                 IsActive = model.IsActive
+                                              };
+                _postRepository.EditPost(entityToUpdate);
+                return RedirectToAction("List");
+            }
+            
+            return View();
+        }
 
     }
 }
