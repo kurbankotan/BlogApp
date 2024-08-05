@@ -24,7 +24,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BlogContext>(options=>{ options.UseSqlite(builder.Configuration["ConnectionStrings:sql_connection"]);});
 
 //Authentication İçin
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>{
+    options.LoginPath = "/Users/Login";   // posts altındaki create'e giderken eğer kullanıcı login olmamışsa login sayfasına yönlendirir
+});
 
 //Her http request'inde bize aynı nesneyi göndertmek için yazılır (Dependency injection)
 builder.Services.AddScoped<IPostRepository, EfPostRepository>();
