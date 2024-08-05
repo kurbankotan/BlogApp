@@ -1,0 +1,11 @@
+@model Post
+
+<p>
+    <b>@Model.Title </b> isimli postu silmek istiyor musunuz?
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden"  name="id" value="@Model.PostId">
+        <button type="submit" class="btn btn-danger">Evet</button>
+        <a asp-action="list" class="btn btn-primary">Hayır</a>
+    </form>
+</p>

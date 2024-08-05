@@ -25,7 +25,7 @@ namespace BlogApp.Controllers
         public async Task<IActionResult> Index(string tag)
         {
             var claims = User.Claims;
-            var posts = _postRepository.Posts;
+            var posts = _postRepository.Posts.Where(i => i.IsActive);
             if(!string.IsNullOrEmpty(tag))
             {
                 posts = posts.Where(x => x.Tags.Any(t =>t.Url == tag));
@@ -183,15 +183,67 @@ namespace BlogApp.Controllers
                                                  Title = model.Title,
                                                  Description = model.Description,
                                                  Content = model.Content,
-                                                 Url = model.Url,
-                                                 IsActive = model.IsActive
+                                                 Url = model.Url
                                               };
+
+                    if(User.FindFirstValue(ClaimTypes.Role) == "admin")
+                    {
+                        entityToUpdate.IsActive = model.IsActive;
+                    }
+
                 _postRepository.EditPost(entityToUpdate);
                 return RedirectToAction("List");
             }
             
             return View();
         }
+
+
+            [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var post =  _postRepository.Posts.FirstOrDefault(x=> x.PostId == id);
+            if(post == null)
+            {
+                return NotFound();
+            }
+
+
+            return View( post);
+        }
+
+
+        [HttpPost]
+        public  IActionResult Delete(int id) //Model Binding nereden geliyor. Burada formdan
+        {
+
+            var post =  _postRepository.Posts.FirstOrDefault(x=> x.PostId == id);
+            if(post == null)
+            {
+                return NotFound();
+            }
+
+
+                _postRepository.DeletePost(post);
+                return RedirectToAction("List");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

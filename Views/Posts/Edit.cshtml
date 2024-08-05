@@ -36,6 +36,14 @@
                     <span asp-validation-for="Content" class="text-danger"></span>
                 </div>
 
+                    @if(User.FindFirstValue(ClaimTypes.Role) == "admin")
+                    {
+                        <div class="form-check mb-3">
+                            <input asp-for = "IsActive" class="form-check-input">
+                            <label asp-for="IsActive" class="form-check-label">Active Mi?</label>
+                        </div>
+                    }
+
                 <button type="submit" class="btn btn-primary">Kaydet</button>
             </form>
 

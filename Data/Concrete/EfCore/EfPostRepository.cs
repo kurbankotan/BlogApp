@@ -23,6 +23,12 @@ namespace BlogApp.Data.Concrete
             _context.SaveChanges();
         }
 
+        public void DeletePost(Post post)
+        {
+            _context.Posts.Remove(post);
+            _context.SaveChanges();
+        }
+
         public void EditPost(Post post)
         {
             var entity = _context.Posts.FirstOrDefault(i => i.PostId == post.PostId);
