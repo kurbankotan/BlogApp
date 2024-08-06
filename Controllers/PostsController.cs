@@ -47,9 +47,10 @@ namespace BlogApp.Controllers
         {
             return View(await _postRepository
             .Posts
+            .Include(x=> x.User)                            //Post'un User'i
             .Include(x=>x.Tags)
             .Include(x=>x.Comments)
-            .ThenInclude(x =>x.User)
+            .ThenInclude(x =>x.User)                       //Comment'in User'i
             .FirstOrDefaultAsync(p=>p.Url == url));
         }
 
