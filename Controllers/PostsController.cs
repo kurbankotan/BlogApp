@@ -15,10 +15,13 @@ namespace BlogApp.Controllers
         private IPostRepository _postRepository;
         private ICommentRepository _commentRepository;
 
-        public PostsController(IPostRepository postRepository, ICommentRepository commentRepository)
+        private ITagRepository _tagRepository;
+
+        public PostsController(IPostRepository postRepository, ICommentRepository commentRepository, ITagRepository tagRepository)
         {
            _postRepository = postRepository;
            _commentRepository = commentRepository;
+           _tagRepository = tagRepository;
         }
 
 
@@ -155,12 +158,14 @@ namespace BlogApp.Controllers
                 return NotFound();
             }
 
-            var post = _postRepository.Posts.FirstOrDefault(x=> x.PostId == id);
+            var post = _postRepository.Posts.Include(i=>i.Tags).FirstOrDefault(x=> x.PostId == id);
             if(post == null)
             {
                 return NotFound();
             }
 
+
+            ViewBag.Tags = _tagRepository.Tags.ToList();
 
             return View(new PostCreateViewModel {
                 PostId = post.PostId,
@@ -168,14 +173,15 @@ namespace BlogApp.Controllers
                 Description = post.Description,
                 Content = post.Content,
                 Url = post.Url,
-                IsActive = post.IsActive
+                IsActive = post.IsActive,
+                Tags = post.Tags
             });
         }
 
 
         [Authorize]
         [HttpPost]
-        public IActionResult Edit(PostCreateViewModel model)
+        public IActionResult Edit(PostCreateViewModel model, int[] tagIds)
         {
             if(ModelState.IsValid)
             {
@@ -192,10 +198,11 @@ namespace BlogApp.Controllers
                         entityToUpdate.IsActive = model.IsActive;
                     }
 
-                _postRepository.EditPost(entityToUpdate);
+                _postRepository.EditPost(entityToUpdate, tagIds);
                 return RedirectToAction("List");
             }
             
+            ViewBag.Tags = _tagRepository.Tags.ToList();
             return View();
         }
 
